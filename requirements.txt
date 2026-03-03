@@ -1,0 +1,24 @@
+fastapi
+uvicorn
+
+gradio
+
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+langserve
+
+
+# embedding providers (choose one or both)
+langchain-openai
+openai
+langchain-huggingface
+
+# env file support for convenient key storage
+python-dotenv
+
+pymupdf
+python-docx
+
+sse-starlette

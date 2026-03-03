@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+
+.venv/
+
+data/uploads/*
+!data/uploads/.gitkeep
+
+data/chroma/*
+!data/chroma/.gitkeep
+
+.DS_Store
+Thumbs.db
+.env
+.env.*
+
