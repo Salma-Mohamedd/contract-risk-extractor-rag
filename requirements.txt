@@ -9,10 +9,6 @@ langchain-community
 langchain-text-splitters
 langserve
 
-
-# embedding providers (choose one or both)
-langchain-openai
-openai
 langchain-huggingface
 
 # env file support for convenient key storage
@@ -22,3 +18,5 @@ pymupdf
 python-docx
 
 sse-starlette
+
+groq

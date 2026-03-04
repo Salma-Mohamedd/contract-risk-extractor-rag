@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import os
 from pathlib import Path
 
 # automatically load variables from a .env file if present
@@ -22,9 +23,8 @@ class Settings:
     top_k: int = 6
     min_relevance: float = 0.35  # 0..1 (higher = better)
 
-    # OpenAI models (no local LLM install needed)
-    openai_chat_model: str = "gpt-4o-mini"
-    openai_embed_model: str = "text-embedding-3-small"
+    groq_model: str = "meta-llama/llama-4-maverick-17b-128e-instruct"
+    groq_api_key: str = os.getenv("GROQ_API_KEY", "")
 
     temperature: float = 0.0
 

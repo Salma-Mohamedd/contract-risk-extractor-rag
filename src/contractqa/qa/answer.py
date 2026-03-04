@@ -1,9 +1,7 @@
 from typing import List, Tuple
 from contractqa.config import settings
 from contractqa.indexing.vectorstore import get_vectorstore
-from langchain_openai import ChatOpenAI
-from langchain_core.messages import SystemMessage, HumanMessage
-
+from contractqa.qa.groq_llm import groq_chat
 
 def answer_question(question: str, history: List[Tuple[str, str]] | None = None) -> str:
     history = history or []
@@ -40,6 +38,9 @@ def answer_question(question: str, history: List[Tuple[str, str]] | None = None)
         "Answer clearly and concisely, with citations."
     )
 
-    llm = ChatOpenAI(model=settings.openai_chat_model, temperature=settings.temperature)
-    resp = llm.invoke([SystemMessage(content=system), HumanMessage(content=user)])
-    return resp.content
+    # Call Groq
+    resp = groq_chat([
+        {"role": "system", "content": system},
+        {"role": "user", "content": user},
+    ])
+    return str(resp)

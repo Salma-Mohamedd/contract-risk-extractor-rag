@@ -1,4 +1,5 @@
 import gradio as gr
+from langchain_core import chat_history
 from contractqa.indexing.ingest import ingest_contract
 from contractqa.extract.extractor import extract_key_items
 from contractqa.qa.answer import answer_question
@@ -48,7 +49,11 @@ def build_demo() -> gr.Blocks:
 
             def respond(user_message, chat_history):
                 reply = answer_question(user_message, chat_history)
-                return "", chat_history + [(user_message, reply)]
+                chat_history.append({"role": "user", "content": user_message})
+                chat_history.append({"role": "assistant", "content": reply})
+                return "", chat_history
+
+
 
             send.click(respond, inputs=[msg, chatbot], outputs=[msg, chatbot])
             msg.submit(respond, inputs=[msg, chatbot], outputs=[msg, chatbot])
