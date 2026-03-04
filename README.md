@@ -23,6 +23,15 @@ Then chat Q&A with citations.
 ## ⚙️ Setup (Windows)
 
 ### 1. Create virtual environment
-```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
+
+### 2. Install requirements
+pip install -r requirements.txt
+pip install -e .
+
+### 3. Environment variables
+GROQ_API_KEY=your_groq_key_here
+
+### 4. Run the App
+uvicorn contractqa.api.server:app --reload
